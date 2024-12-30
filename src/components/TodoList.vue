@@ -35,10 +35,16 @@
 import { ref, computed, watch } from 'vue'
 import TodoItem from './TodoItem.vue'
 
-const todos = ref([])
+// 从 LocalStorage 获取保存的待办事项，如果没有则使用空数组
+const todos = ref(JSON.parse(localStorage.getItem('todos') || '[]'))
 const newTodo = ref('')
 const isCollapsed = ref(true)
 const draggedItem = ref(null)
+
+// 监听 todos 的变化，保存到 LocalStorage
+watch(todos, (newTodos) => {
+  localStorage.setItem('todos', JSON.stringify(newTodos))
+}, { deep: true })  // 使用 deep 选项以监听数组内部的变化
 
 const visibleTodos = computed(() => {
   return isCollapsed.value ? todos.value.slice(0, 3) : todos.value
