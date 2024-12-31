@@ -1,3 +1,12 @@
+# ohmytodolist 
+
+本项目代码完全由cursor生成。
+
+项目链接：https://ohmytodolist.netlify.app/
+
+
+生成提示词：
+
 使用 Vue3  创建一个 TODO List工具。
 
 一，功能需求
